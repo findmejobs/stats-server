@@ -1,0 +1,6 @@
+#!/bin/bash
+# Called by Upstart, /etc/init/fireandforget.conf
+
+export PATH=$PATH:/usr/local/bin
+
+fire-and-forget 2>&1 >> <%= node[:fireandforget][:log_file] %>
