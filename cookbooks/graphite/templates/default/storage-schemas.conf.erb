@@ -1,4 +1,18 @@
-[catchall]
-priority = 0
-pattern = ^.*
-retentions = 60:100800,900:63000
+# Schema definitions for whisper files. Entries are scanned in order,
+# and first match wins.
+#
+#  [name]
+#  pattern = regex
+#  retentions = timePerPoint:timeToStore, timePerPoint:timeToStore, ...
+
+[default_1min_for_1day]
+pattern = .*
+retentions = 60s:1d
+
+[stats]
+pattern = ^stats\..*
+retentions = 10:2160,60:10080,600:262974
+
+[stats_count]
+pattern = ^stats_counts\..*
+retentions = 10:2160,60:10080,600:262974
