@@ -53,7 +53,7 @@
     group params[:group]
     mode 0644
     action :create
-    only_if { File.exists? sv_dir_name + "/supervise/ok" }
+    only_if { !File.exists? sv_dir_name + "/supervise/ok" }
   end
 
   file sv_dir_name + "/supervise/control" do
@@ -61,7 +61,7 @@
     group params[:group]
     mode 0600
     action :create
-    only_if { File.exists? sv_dir_name + "/supervise/control" }
+    only_if { !File.exists? sv_dir_name + "/supervise/control" }
   end
 
   unless params[:nolog]
